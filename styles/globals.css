@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Source+Sans+Pro:wght@400;600;700&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+html,body,#root,.content{
+  height:100%;
+  width:100%;
+  font-family: 'Source Sans Pro',sans-serif;
+}
