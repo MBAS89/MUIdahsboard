@@ -11,22 +11,19 @@ import dynamic from 'next/dynamic'
 import SearchIcon from '@mui/icons-material/Search';
 import Navbar from './Navbar';
 
-const DashSidebar = dynamic(() => import('./DashSidebar'))
+const DashSidebar = dynamic(() => import('./DashSidebar'),{ssr:false});
 
 const AdminDashLayout = ({ children }) => {
 
   return (
     <div className="">
-    
     <div className='flex'>
-     
         <div><DashSidebar/></div>
         <div>
-        <Navbar/>
-        {children}
+          <Navbar/>
+          {children}
         </div>
     </div>
-    
     </div>
   )
 }

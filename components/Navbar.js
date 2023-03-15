@@ -19,7 +19,7 @@ const Navbar = () => {
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
   return (
-    <Box className='flex justify-between p-2 bg-orange-300'>
+    <Box className='flex justify-between p-2 '>
         {/*SEARCH BAR*/}
         <Box className='flex rounded-[3px]' backgroundColor={colors.primary[400]}>
             <InputBase className='ml-2 flex-1' placeholder='Search'/>

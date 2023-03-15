@@ -1,17 +1,12 @@
 import { React,useState } from 'react'
-
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-
-
-
-
 import {Box} from '@mui/material';
 import {IconButton} from '@mui/material';
 import {useTheme} from '@mui/material';
 import {Typography} from '@mui/material';
-import Link from 'next/link';
+//import NextLink from 'next/link';
 import {tokens} from './theme';
-
+import Link from 'next/link';
 //icons
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
@@ -27,37 +22,39 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 
 import Image from "next/image";
 import userImage from '../public/assets/user.jpg'
+import { useRouter } from 'next/router';
 //import "react-pro-sidebar/dist/css/styles.css";
 
-
-export const Item = ({ title, to, icon, selected, setSelected }) => {
+export const Item = ({  title,icon, to,  selected, setSelected}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+
   return (
-    <MenuItem
+    <Link href={to}>
+      <MenuItem
         active={selected === title}
         style={{
-        color: colors.grey[100],
+          color: colors.grey[100],
         }}
         onClick={() => setSelected(title)}
         icon={icon}
-    >
+      >
         <Typography>{title}</Typography>
-        <Link href={to} />
-    </MenuItem>
+        
+      </MenuItem>
+    </Link>
   )
 }
 
-
-
-
-
 const DashSidebar = () => {
+    const router = useRouter()
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [isCollapsed,setIsCollapsed]= useState(false)
     const [selected,setSelected]= useState('Dashboard')
-  return (
+
+  return ( 
     <Box
       sx={{
         "& .pro-sidebar-inner": {
@@ -77,7 +74,7 @@ const DashSidebar = () => {
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed}>
+      <Sidebar collapsed={isCollapsed} >
             <Menu iconShape="square">
             {/* LOGO AND MENU ICON */}
             <MenuItem
@@ -131,15 +128,16 @@ const DashSidebar = () => {
                 </Box>
             )}
 
-            <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                <Item
-                title="Dashboard"
-                to="/"
-                icon={<HomeOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-                />
 
+            <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+              
+              <Item
+              title="Dashboard"
+              to='/dashboard'
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              />
                 <Typography
                 variant="h6"
                 color={colors.grey[300]}
@@ -149,7 +147,7 @@ const DashSidebar = () => {
                 </Typography>
                 <Item
                 title="Manage Team"
-                to="/team"
+                to='/team'
                 icon={<PeopleOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
@@ -168,7 +166,6 @@ const DashSidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
                 />
-
                 <Typography
                 variant="h6"
                 color={colors.grey[300]}
@@ -190,8 +187,6 @@ const DashSidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
                 />
-                
-
                 <Typography
                 variant="h6"
                 color={colors.grey[300]}
@@ -199,6 +194,7 @@ const DashSidebar = () => {
                 >
                 Charts
                 </Typography>
+              
                 <Item
                 title="Bar Chart"
                 to="/bar"
