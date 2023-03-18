@@ -1,36 +1,31 @@
 import {Box} from '@mui/material';
 import {tokens} from '../../components/theme';
 import { DataGrid,GridToolbar } from '@mui/x-data-grid';
-import { mockDataContacts } from '../data/mockData';
+import { mockDataOrders } from '../data/mockData';
 import {useTheme} from '@mui/material';
 import Header from "@/components/Header";
 import AdminDashLayout from "../../components/AdminDashLayout";
 import {Typography} from '@mui/material';
 
-const Contacts = () => {
+const Orders = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
     {field:'id',headerName:'ID',flex:0.5},
-    {field:'registrarId',headerName:'Registrar ID'},
-    {field:'name',headerName:'Name',flex:1,cellClassName:'name-column--cell'},
-    {field:'age',headerName:'Age',type:'number',headerAlign:'left',align:'left'},
-    {field:'phone',headerName:'Phone Number',flex:1},
-    {field:'email',headerName:'Email',flex:1},
-    {field:'address',headerName:'Address',flex:1},
-    {field:'city',headerName:'City',flex:1},
-    {field:'zipCode',headerName:'ZipCode',flex:1},
-    {field:'access',headerName:'Access level',flex:1,
-    renderCell:({row:{access}})=>{
+    {field:'userName',headerName:'User Name',flex:1,cellClassName:'name-column--cell'},
+    {field:'items',headerName:'Items',flex:1},
+    {field:'userEmail',headerName:'User Email',flex:1},
+    {field:'totalPrice',headerName:'Total Price',flex:1},
+    {field:'status',headerName:'Status',flex:1,
+    renderCell:({row:{status}})=>{
     return(
-    <Box className='bg-pink-300' width='60%' m='0 auto' p='5px' display='flex' justifyContent='center' backgroundColor=
-        {access === 'admin' ? colors.greenAccent[600] : colors.greenAccent[700]} borderRadius = '4px'>
-        {access === 'admin' && <AdminPanelSettingsOutlinedIcon/>}
-        {access === 'manager' && <SecurityOutlinedIcon/>}
-        {access === 'user' && <LockOpenOutlinedIcon/>}
+    <Box width='60%' p='1px' display='flex' justifyContent='center' borderRadius = '10px' backgroundColor=
+        {status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} >
+        {status === 'Pending' && <AdminPanelSettingsOutlinedIcon/>}
+        {status === 'Failed' && <SecurityOutlinedIcon/>}
         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-            {access}
+            {status}
         </Typography>
     </Box>
 )}},
@@ -62,10 +57,10 @@ const Contacts = () => {
                 color: `${colors.grey[100]} !important`,
               },
         }}>
-            <Header title='CONTACTS' subtitle='List of Contacts for Future Reference'></Header>
+            <Header title='ORDERS' subtitle='List of Orders'></Header>
             <Box m='40px 0 0 0' height='75vh' >
                 <DataGrid 
-                rows={mockDataContacts}
+                rows={mockDataOrders}
                 columns={columns}
                 components={{ Toolbar: GridToolbar }}
                 />
@@ -75,4 +70,5 @@ const Contacts = () => {
   )
 }
 
-export default Contacts
+export default Orders
+{/*{status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} */}

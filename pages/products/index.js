@@ -1,38 +1,35 @@
 import {Box} from '@mui/material';
 import {useTheme} from '@mui/material';
 import {Typography} from '@mui/material';
-
 import {tokens} from '../../components/theme';
 import { DataGrid } from '@mui/x-data-grid';
-import { mockDataInvoices } from '../data/mockData';
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
+import { mockDataProducts } from '../data/mockData';
 import Header from "@/components/Header";
 import React from 'react'
 import AdminDashLayout from "../../components/AdminDashLayout";
 
-const Invoices= () => {
+const Product= () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
     {field:'id',headerName:'ID'},
     {field:'name',headerName:'Name',flex:1,cellClassName:'name-column--cell'},
-    {field:'phone',headerName:'Phone Number',flex:1},
-    {field:'email',headerName:'Email',flex:1},
-    {field:'cost',headerName:'Cost',flex:1,
+    {field:'category',headerName:'Category',flex:1},
+    {field:'variant',headerName:'Variant',flex:1},
+    {field:'quantity',headerName:'Quantity',flex:1},
+    {field:'price',headerName:'Price',flex:1,
     renderCell:(params)=>(
-    <Typography color={colors.greenAccent[500]}>${params.row.cost}</Typography>
+    <Typography color={colors.greenAccent[500]}>${params.row.price}</Typography>
     )},
-    {field:'date',headerName:'Date',flex:1}
+    {field:'deliveryDate',headerName:'Delivery Date',flex:1}
    ]
 
   
   return (
     <AdminDashLayout>
         <Box m='20px' width='1630px'> 
-            <Header title='INVOICES' subtitle='List of Invoice Balances'></Header>
+            <Header title='Product' subtitle='List of Products'></Header>
             <Box 
                 m="40px 0 0 0"
                 height="75vh"
@@ -63,7 +60,7 @@ const Invoices= () => {
             }}>
             <DataGrid 
                 checkboxSelection
-                rows={mockDataInvoices}
+                rows={mockDataProducts}
                 columns={columns}
             />
             </Box>
@@ -72,7 +69,7 @@ const Invoices= () => {
   )
 }
 
-export default Invoices
+export default Product
 
 {/*
   return(

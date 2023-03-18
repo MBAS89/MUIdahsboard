@@ -5,24 +5,24 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import AdminDashLayout from "../../components/AdminDashLayout";
 
-const phoneRegExp =  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
 const userSchema = yup.object().shape({
-    firstName:yup.string().required("required"),
-    lastName:yup.string().required("required"),
+    name:yup.string().required("required"),
     email:yup.string().email("invalid email").required("required"),
-    contact:yup.string().matches(phoneRegExp, "Phone number is not valid").required("required"),
-    address1:yup.string().required("required"),
-    address2:yup.string().required("required"),
+    password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+      'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character'
+    ),
+  confirmPassword: yup.string()
+    .required('Confirm password is required')
+    .oneOf([yup.ref('password')], 'Passwords must match')
 })
 
 const initialValues = {
-  firstName:"",
-  lastName:"",
+  enam:"",
   email:"",
-  contact:"",
-  address1:"",
-  address2:""
+  password:"",
+  confirmPassword:""
 }
 const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -47,26 +47,13 @@ const Form = () => {
                         fullWidth
                         variant="filled"
                         type="text"
-                        label="First Name"
+                        label="name"
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        value={values.firstName}
-                        name="firstName"
-                        error={!!touched.firstName && !!errors.firstName}
-                        helperText={touched.firstName && errors.firstName}
-                        sx={{ gridColumn: "span 2" }}
-                    />
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        type="text"
-                        label="Last Name"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.lastName}
-                        name="lastName"
-                        error={!!touched.lastName && !!errors.lastName}
-                        helperText={touched.lastName && errors.lastName}
+                        value={values.name}
+                        name="name"
+                        error={!!touched.name && !!errors.name}
+                        helperText={touched.name && errors.name}
                         sx={{ gridColumn: "span 2" }}
                     />
                     <TextField
@@ -80,46 +67,33 @@ const Form = () => {
                         name="email"
                         error={!!touched.email && !!errors.email}
                         helperText={touched.email && errors.email}
-                        sx={{ gridColumn: "span 4" }}
+                        sx={{ gridColumn: "span 2" }}
                     />
                     <TextField
                         fullWidth
                         variant="filled"
-                        type="text"
-                        label="Contact Number"
+                        type="password"
+                        label="Password"
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        value={values.contact}
-                        name="contact"
-                        error={!!touched.contact && !!errors.contact}
-                        helperText={touched.contact && errors.contact}
-                        sx={{ gridColumn: "span 4" }}
+                        value={values.password}
+                        name="password"
+                        error={!!touched.password && !!errors.password}
+                        helperText={touched.password && errors.password}
+                        sx={{ gridColumn: "span 2" }}
                     />
                     <TextField
                         fullWidth
                         variant="filled"
-                        type="text"
-                        label="Address 1"
+                        type="password"
+                        label="Confirm Password"
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        value={values.address1}
-                        name="address1"
-                        error={!!touched.address1 && !!errors.address1}
-                        helperText={touched.address1 && errors.address1}
-                        sx={{ gridColumn: "span 4" }}
-                    />
-                    <TextField
-                        fullWidth
-                        variant="filled"
-                        type="text"
-                        label="Address 2"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.address2}
-                        name="address2"
-                        error={!!touched.address2 && !!errors.address2}
-                        helperText={touched.address2 && errors.address2}
-                        sx={{ gridColumn: "span 4" }}
+                        value={values.confirmPassword}
+                        name="confirmPassword"
+                        error={!!touched.confirm && !!errors.confirm}
+                        helperText={touched.confirm && errors.confirm}
+                        sx={{ gridColumn: "span 2" }}
                     />
                     </Box>
                     <Box display="flex" justifyContent="end" mt="20px">
