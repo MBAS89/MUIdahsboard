@@ -22,7 +22,7 @@ const Orders = () => {
     return(
     <Box width='60%' p='1px' display='flex' justifyContent='center' borderRadius = '10px' backgroundColor=
         {status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} >
-        {status === 'Pending' && <AdminPanelSettingsOutlinedIcon/>}
+        {status === 'Pending' && style={{ backgroundColor: '#4caf50' }}}
         {status === 'Failed' && <SecurityOutlinedIcon/>}
         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
             {status}
