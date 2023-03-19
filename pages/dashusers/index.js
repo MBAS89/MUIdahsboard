@@ -14,7 +14,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import Header from "@/components/Header";
 import React from 'react'
 import AdminDashLayout from "../../components/AdminDashLayout";
-const Users = () => {
+
+const DashUsers = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -86,4 +87,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default DashUsers

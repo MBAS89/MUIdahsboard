@@ -133,6 +133,3 @@ import {
   }
   
   export default Calendar
-
-
- 

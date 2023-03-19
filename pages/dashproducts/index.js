@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import React from 'react'
 import AdminDashLayout from "../../components/AdminDashLayout";
 
-const Product= () => {
+const DashProducts= () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -69,7 +69,7 @@ const Product= () => {
   )
 }
 
-export default Product
+export default DashProducts
 
 {/*
   return(

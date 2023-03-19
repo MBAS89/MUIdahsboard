@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import AdminDashLayout from "../../components/AdminDashLayout";
 import {Typography} from '@mui/material';
 
-const Orders = () => {
+const DashOrders = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -22,7 +22,7 @@ const Orders = () => {
     return(
     <Box width='60%' p='1px' display='flex' justifyContent='center' borderRadius = '10px' backgroundColor=
         {status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} >
-        {status === 'Pending' && style={{ backgroundColor: '#4caf50' }}}
+        {status === 'Pending' && "style={{ backgroundColor: '#4caf50' }}"}
         {status === 'Failed' && <SecurityOutlinedIcon/>}
         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
             {status}
@@ -70,5 +70,5 @@ const Orders = () => {
   )
 }
 
-export default Orders
+export default DashOrders
 {/*{status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} */}
