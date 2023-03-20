@@ -15,31 +15,4 @@ html,body,#root,.content{
   font-family: 'Source Sans Pro',sans-serif;
 }
 
-.signupShadow{
-  box-shadow: 1px -10px 5px 5px rgba(0,0,0,0.26);
-}
-body{
-  background: rgb(101,138,244);
-  background: linear-gradient(75deg, rgba(101,138,244,1) 0%, rgba(244,177,246,1) 100%);
-}
 
-.registerOr{
-  position:relative;
-  height:1px;
-  width:95%;
-  margin:36px 0;
-  background-color:#d4d4d4;
-  padding:0 30px;
-  font-weight: 700;
-}
-.registerOr::before{
-  content:'Or';
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  background-color:#FFF;
-  color:#232836;
-  padding:0 15px;
-
-}

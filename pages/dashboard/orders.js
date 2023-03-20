@@ -71,4 +71,3 @@ const DashOrders = () => {
 }
 
 export default DashOrders
-{/*{status === 'Delivered' ? colors.greenAccent[600]  : colors.greenAccent[700]} */}

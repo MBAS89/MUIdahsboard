@@ -29,7 +29,7 @@ const DashProducts= () => {
   return (
     <AdminDashLayout>
         <Box m='20px' width='1630px'> 
-            <Header title='Product' subtitle='List of Products'></Header>
+            <Header title='Products' subtitle='List of Products'></Header>
             <Box 
                 m="40px 0 0 0"
                 height="75vh"
@@ -70,18 +70,3 @@ const DashProducts= () => {
 }
 
 export default DashProducts
-
-{/*
-  return(
-    <Box className='bg-pink-300' width='60%' m='0 auto' p='5px' display='flex' justifyContent='center' backgroundColor=
-        {access === 'admin' ? colors.greenAccent[600] : colors.greenAccent[700]} borderRadius = '4px'>
-        {access === 'admin' && <AdminPanelSettingsOutlinedIcon/>}
-        {access === 'manager' && <SecurityOutlinedIcon/>}
-        {access === 'user' && <LockOpenOutlinedIcon/>}
-        <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-            {access}
-        </Typography>
-    </Box>
-)}},
-]
-*/}
